@@ -1,78 +1,123 @@
 .home_01 {
   margin: 0;
   padding: 0;
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .background_01 {
-  position: fixed;
+  position: absolute;
   top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
 }
 
 .transparency_01 {
-  position: fixed;
+  position: absolute;
   top: 0;
-  left: 100px;
-  width: 850px;
-  height: 919px;
+  left: 5%; /* Odstęp od lewej strony */
+  width: 40%; /* Ustawiamy szerokość kontenera */
+  height: 100%;
+  max-width: 1000px;
   background: rgba(3, 26, 31, 0.7);
-}
-
-.title_01 {
-  position: fixed;
-  width: 628px;
-  height: 187px;
-  left: 200px;
-  top: 434px;
-
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 48px;
-  line-height: 58px;
-  text-align: left;
-
-  color: #ffffff;
-}
-
-.eng_title_01 {
-  position: fixed;
-  width: 628px;
-  height: 76px;
-  left: 200px;
-  top: 714px;
-
-  font-family: "Lato";
-  font-style: normal;
-  font-weight: 800;
-  font-size: 32px;
-  line-height: 38px;
-  text-align: left;
-
-  color: #ffffff;
+  display: flex;
+  flex-direction: column; /* Ustawiamy układ pionowy */
+  align-items: flex-start; /* Elementy wyrównane do lewej */
+  justify-content: center; /* Wyrównanie elementów w pionie */
+  padding: 40px;
 }
 
 .button_next_01 {
-  position: fixed;
-  width: 150px;
-  height: 150px;
-  left: 200px;
-  top: 191px;
+  align-self: flex-start; /* Guzik wyrównany do lewej */
+  width: 200%;
+  height: 60%;
   border-radius: 23px;
   background-color: #ffda55;
-
-  font-family: "Lato";
+  font-family: "Lato", sans-serif;
   font-style: normal;
   font-weight: 800;
-  font-size: 30px;
-  line-height: 38px;
+  font-size: 1vw;
   text-align: center;
-
+  line-height: 50px; /* Wyśrodkowanie tekstu w pionie */
   color: #ffffff;
+  cursor: pointer;
+  transition: background-color 0.5s ease;
+  margin-bottom: 100px; /* Odstęp od tytułu poniżej */
 }
+
 .button_next_01:hover {
   background-color: black;
+}
+
+.title_01 {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 2.2vw; /* Dynamiczny rozmiar czcionki */
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 70px; /* Odstęp od podtytułu */
+  text-align: left;
+  width: 80%;
+}
+
+.eng_title_01 {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.4vw; /* Dynamiczny rozmiar */
+  line-height: 1.2;
+  color: #ffffff;
+  margin-bottom: 150px; /* Odstęp poniżej */
+  text-align: left;
+  width: 80%;
+}
+
+.dyplomant_01 {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.2vw;
+  line-height: 1.2;
+  color: #ffffff;
+  text-align: left;
+  width: 80%;
+}
+
+.dyplomant_name_01 {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2vw;
+  margin-bottom: 10px;
+  line-height: 1.2;
+  color: #ffffff;
+  text-align: left;
+  width: 80%;
+}
+
+.promotor_01 {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 1.2vw;
+  line-height: 1.2;
+  color: #ffffff;
+  text-align: left;
+  width: 80%;
+}
+
+.promotor_name_01 {
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.2vw;
+  line-height: 1.2;
+  color: #ffffff;
+  text-align: left;
+  width: 80%;
 }

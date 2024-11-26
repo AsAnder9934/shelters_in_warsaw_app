@@ -1,0 +1,40 @@
+.menu_02 {
+  margin: 0;
+  padding: 0;
+}
+
+.transparency_02 {
+  position: fixed;
+  top: 0;
+  left: 25%;
+  width: 850px;
+  height: 919px;
+  background: rgba(3, 26, 31, 0.7);
+}
+
+.title_02 {
+  position: fixed;
+  width: 700px;
+  height: 77px;
+  left: 550px;
+  top: 151px;
+
+  font-family: "Lato";
+  font-style: normal;
+  font-weight: 800;
+  font-size: 64px;
+  line-height: 77px;
+
+  color: #ffffff;
+}
+
+.line_02 {
+  position: fixed;
+  width: 550px;
+  height: 0px;
+  left: 621px;
+  top: 266.84px;
+
+  border: 3px solid #ffffff;
+  transform: rotate(-0.4deg);
+}

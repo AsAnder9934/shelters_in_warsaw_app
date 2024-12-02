@@ -19,22 +19,22 @@
 .transparency_01 {
   position: absolute;
   top: 0;
-  left: 5%; /* Odstęp od lewej strony */
-  width: 40%; /* Ustawiamy szerokość kontenera */
+  left: 5%;
+  width: 40%;
   height: 100%;
   max-width: 1000px;
   background: rgba(3, 26, 31, 0.7);
   display: flex;
-  flex-direction: column; /* Ustawiamy układ pionowy */
-  align-items: flex-start; /* Elementy wyrównane do lewej */
-  justify-content: center; /* Wyrównanie elementów w pionie */
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
   padding: 40px;
 }
 
 .button_next_01 {
-  align-self: flex-start; /* Guzik wyrównany do lewej */
-  width: 200%;
-  height: 60%;
+  align-self: flex-start;
+  width: 150px;
+  height: 100px;
   border-radius: 23px;
   background-color: #ff6600;
   font-family: "Lato", sans-serif;
@@ -42,11 +42,11 @@
   font-weight: 800;
   font-size: 1vw;
   text-align: center;
-  line-height: 50px; /* Wyśrodkowanie tekstu w pionie */
+  line-height: 50px;
   color: #ffffff;
   cursor: pointer;
   transition: background-color 0.8s ease;
-  margin-bottom: 100px; /* Odstęp od tytułu poniżej */
+  margin-bottom: 80px;
 }
 
 .button_next_01:hover {
@@ -57,10 +57,10 @@
   font-family: "Lato", sans-serif;
   font-style: normal;
   font-weight: 800;
-  font-size: 2.2vw; /* Dynamiczny rozmiar czcionki */
+  font-size: 2.2vw;
   line-height: 1.2;
   color: #ffffff;
-  margin-bottom: 70px; /* Odstęp od podtytułu */
+  margin-bottom: 70px;
   text-align: left;
   width: 80%;
 }
@@ -69,10 +69,10 @@
   font-family: "Lato", sans-serif;
   font-style: normal;
   font-weight: 800;
-  font-size: 1.4vw; /* Dynamiczny rozmiar */
+  font-size: 1.4vw;
   line-height: 1.2;
   color: #ffffff;
-  margin-bottom: 150px; /* Odstęp poniżej */
+  margin-bottom: 100px;
   text-align: left;
   width: 80%;
 }

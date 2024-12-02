@@ -5,12 +5,16 @@ import data_icon from "./src/data.svg";
 import map_icon from "./src/map.svg";
 import shelter_icon from "./src/shelter.svg";
 import "./Menu.css";
+import { Link, useNavigate } from "react-router-dom";
 
 function Menu() {
   return (
     <div className="menu_02">
       <img className="background_01" src={background} alt="background"></img>
       <div className="transparency_02">
+        <Link to="/">
+          <button className="back_02">POWRÓT</button>
+        </Link>
         <div className="title_02">MENU GEOPORTALU</div>
         <line className="line_02"></line>
         <div className="button1_02">
@@ -19,7 +23,9 @@ function Menu() {
             src={about_icon}
             alt="about_icon"
           ></img>
-          <button className="about_02">O PROJEKCIE</button>
+          <Link to="about">
+            <button className="about_02">O PROJEKCIE</button>
+          </Link>
         </div>
         <div className="button2_02">
           <img className="data_icon_02" src={data_icon} alt="data_icon"></img>

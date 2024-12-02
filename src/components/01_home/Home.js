@@ -9,7 +9,7 @@ function Home() {
       <img className="background_01" src={background} alt="background"></img>
       <div className="transparency_01">
         <Link to="menu">
-          <button className="button_next_01">Wchodzę</button>
+          <button className="button_next_01">MENU</button>
         </Link>
         <div className="title_01">
           Wyznaczenie potencjalnej lokalizacji schronów na terenie Warszawy

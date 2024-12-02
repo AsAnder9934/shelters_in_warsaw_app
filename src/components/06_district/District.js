@@ -131,6 +131,7 @@ const DistrictDetails = () => {
     <div className="district_06">
       <h1 className="title_06">{district.name}</h1>
       <div className="line_06"></div>
+      <button className="back_02">DZIELNICE</button>
       <MapContainer
         className="map_06"
         center={district.center}

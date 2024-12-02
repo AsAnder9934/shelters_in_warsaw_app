@@ -29,11 +29,15 @@ function Menu() {
         </div>
         <div className="button2_02">
           <img className="data_icon_02" src={data_icon} alt="data_icon"></img>
-          <button className="data_02">DANE</button>
+          <Link to="/menu/data">
+            <button className="data_02">DANE</button>
+          </Link>
         </div>
         <div className="button3_02">
           <img className="map_icon_02" src={map_icon} alt="map-icon"></img>
-          <button className="geoportal_02">GEOPORTAL</button>
+          <Link to="/menu/geoportal">
+            <button className="geoportal_02">GEOPORTAL</button>
+          </Link>
         </div>
         <div className="button4_02">
           <img

@@ -142,9 +142,9 @@
   margin-left: -350px;
 }
 .back_02 {
-  position: absolute;
-  top: 17%;
-  left: -35%;
+  position: relative;
+  top: 20vh;
+  left: -40vw;
   width: 150px;
   height: 100px;
   border-radius: 23px;

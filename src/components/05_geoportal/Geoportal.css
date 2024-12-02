@@ -1,0 +1,76 @@
+.geoportal_05 {
+  margin: 0;
+  padding: 0;
+  width: 100vw;
+  min-height: 100vh;
+  overflow: hidden;
+  background-color: black;
+}
+.map_05 {
+  position: relative;
+  margin: 0 auto;
+  width: 40%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.title_05 {
+  position: relative;
+  margin-top: -5%;
+  margin-left: -110%;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 2.2vw;
+  line-height: 1.2;
+  color: #ffffff;
+  text-align: left;
+  width: 100%;
+}
+.line_05 {
+  width: 80%;
+  height: 0;
+  border: 2px solid #ff6600;
+  margin-top: 5%;
+  margin-left: -130%;
+}
+.description_05 {
+  position: relative;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 600;
+  font-size: 1.5vw;
+  line-height: 1.2;
+  color: #ffffff;
+  text-align: left;
+  width: 30%;
+  margin-left: 7%;
+  margin-top: 10%;
+}
+
+.map_svg {
+  scale: 11;
+  margin-top: 36%;
+  margin-left: 90%;
+  cursor: pointer;
+  transition: fill 0.3s, font-size 0.2s;
+}
+
+.map_svg:hover {
+  fill: #ff6600;
+  font-size: 22px;
+}
+
+.hovered_district_05 {
+  position: fixed;
+  font-family: "Lato", sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 1.8vw;
+  line-height: 1.2;
+  color: #ffffff;
+  text-align: left;
+  margin-top: 15%;
+  margin-left: -75%;
+}

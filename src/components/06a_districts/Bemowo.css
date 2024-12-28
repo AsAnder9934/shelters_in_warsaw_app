@@ -1,0 +1,8 @@
+.leaflet-control-layers-list {
+  text-align: left;
+}
+
+.leaflet-control-layers-selector {
+  left: 0;
+  margin-right: 10px;
+}

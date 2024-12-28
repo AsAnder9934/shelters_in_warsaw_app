@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { MapContainer, TileLayer, GeoJSON } from "react-leaflet";
-import L from "leaflet";
 import "leaflet/dist/leaflet.css";
 import "./District.css";
 
@@ -131,7 +131,9 @@ const DistrictDetails = () => {
     <div className="district_06">
       <h1 className="title_06">{district.name}</h1>
       <div className="line_06"></div>
-      <button className="back_02">DZIELNICE</button>
+      <Link to="/menu/geoportal">
+        <button className="back_02">DZIELNICE</button>
+      </Link>
       <MapContainer
         className="map_06"
         center={district.center}
@@ -139,7 +141,6 @@ const DistrictDetails = () => {
         style={{ height: "800px", width: "1200px" }}
       >
         <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
-        <GeoJSON url={district.geoJsonData} />
       </MapContainer>
     </div>
   );

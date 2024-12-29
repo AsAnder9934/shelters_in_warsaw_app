@@ -12,6 +12,10 @@ import Wola from "./components/06a_districts/Wola";
 import Srodmiescie from "./components/06a_districts/Srodmiescie";
 import Zoliborz from "./components/06a_districts/Zoliborz";
 import Bielany from "./components/06a_districts/Bielany";
+import Bialoleka from "./components/06a_districts/Bialoleka";
+import PragaPolnoc from "./components/06a_districts/PragaPolnoc";
+import PragaPoludnie from "./components/06a_districts/PragaPoludnie";
+import Targowek from "./components/06a_districts/Targowek";
 
 const router = createBrowserRouter([
   {
@@ -57,6 +61,22 @@ const router = createBrowserRouter([
   {
     path: "/:districtId/bielany",
     element: <Bielany />,
+  },
+  {
+    path: "/:districtId/bialoleka",
+    element: <Bialoleka />,
+  },
+  {
+    path: "/:districtId/pragapolnoc",
+    element: <PragaPolnoc />,
+  },
+  {
+    path: "/:districtId/pragapoludnie",
+    element: <PragaPoludnie />,
+  },
+  {
+    path: "/:districtId/targowek",
+    element: <Targowek />,
   },
 ]);
 

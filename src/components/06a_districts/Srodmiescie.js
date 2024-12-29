@@ -5,205 +5,84 @@ import "leaflet/dist/leaflet.css";
 import axios from "axios";
 import "./Bemowo.css";
 
-const Srodmiescie = () => {
-  const districtData = {
-    name: "Śródmieście",
-    overlays: [
-      {
-        name: "Budynki",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_budynki&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-      {
-        name: "Odległość od sieci gazowej do 50m",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_gazowa_50m&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-      {
-        name: "Odległość od sieci gazowej do 10m",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_gazowa_10m&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-      {
-        name: "Odległość od sieci ciepłowniczej do 10m",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_cieplownicza_10m&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-      {
-        name: "Odległość od sieci elektroenergetycznej do 10m",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_elektroenergetyczna_10m&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-      {
-        name: "Odległość od sieci wodociągowej do 10m",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_wodociagowa_10m&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-      {
-        name: "Odległość od sieci kanalizacyjnej do 10m",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_kanalizacyjna_10m&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-      {
-        name: "Odległość od instalacji BDOT10k do 100m",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_dodatkowe_bdot10k&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-      {
-        name: "Odległość od zabudowy do 150m",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_odleglosc_150m&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-      {
-        name: "Zabudowa gęsta",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_zabudowa_gesta&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-      {
-        name: "Zabudowa średnio gęsta",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_srednio_gesta_zabudowa&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-      {
-        name: "Zabudowa luźna",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_luzna_zabudowa&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-      {
-        name: "Tereny wyłączone",
-        url: "http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrodmiescie_tereny_wylaczonee&maxFeatures=50&outputFormat=application%2Fjson",
-      },
-    ],
-  };
+const Srodmiescie = ({ districtName = "Śródmieście - dzielnica" }) => {
+  const sheltersUrls = [
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_budynki&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_odleglosc_150m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_cieplownicza_10m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_gazowa_10m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_gazowa_50m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters:warszawa_elektroenergetyczna_10m&maxFeatures=500&outputFormat=application/json&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters:warszawa_kanalizacyjna_10m&maxFeatures=500&outputFormat=application/json&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_wodociagowa_10m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_dodatkowe_bdot10k_100m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_luzna_zabudowa&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_srednio_gesta_zabudowa&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_zabudowa_gesta&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_tereny_wylaczone&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_gminy_granica&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+  ];
 
-  const [overlayData, setOverlayData] = useState([]);
+  // Stan dla nowych danych
+  const [sheltersData, setSheltersData] = useState([]);
 
+  // Pobieranie danych z linków WFS
   useEffect(() => {
-    const fetchOverlays = async () => {
-      const promises = districtData.overlays.map((overlay) =>
-        axios
-          .get(overlay.url)
-          .then((response) => ({ name: overlay.name, data: response.data }))
-          .catch((error) =>
-            console.error(`Error loading overlay ${overlay.name}:`, error)
-          )
-      );
-      const results = await Promise.all(promises);
-      setOverlayData(results);
+    const fetchShelters = async () => {
+      try {
+        const responses = await Promise.all(
+          sheltersUrls.map((url) => axios.get(url))
+        );
+        const allData = responses.map((response) => response.data.features);
+        setSheltersData(allData);
+      } catch (error) {
+        console.error("Error loading shelters data:", error);
+      }
     };
 
-    fetchOverlays();
-  }, [districtData.overlays]);
+    fetchShelters();
+  }, [districtName]);
 
-  const getOverlayStyle = (name) => {
-    switch (name) {
-      case "Budynki":
-        return {
-          color: "red",
-          weight: 2,
-          opacity: 1,
-          fillColor: "red",
-          fillOpacity: 1,
-        };
-
-      case "Odległość od sieci gazowej do 50m":
-        return {
-          color: "yellow",
-          weight: 2,
-          opacity: 1,
-          fillColor: "yellow",
-          fillOpacity: 0.3,
-        };
-      case "Odległość od sieci gazowej do 10m":
-        return {
-          color: "yellow",
-          weight: 2,
-          opacity: 1,
-          fillColor: "yellow",
-          fillOpacity: 0.3,
-        };
-      case "Odległość od sieci ciepłowniczej do 10m":
-        return {
-          color: "pink",
-          weight: 2,
-          opacity: 1,
-          fillColor: "pink",
-          fillOpacity: 0.3,
-        };
-      case "Odległość od sieci elektroenergetycznej do 10m":
-        return {
-          color: "red",
-          weight: 2,
-          opacity: 1,
-          fillColor: "red",
-          fillOpacity: 0.3,
-        };
-      case "Odległość od sieci wodociągowej do 10m":
-        return {
-          color: "blue",
-          weight: 2,
-          opacity: 1,
-          fillColor: "blue",
-          fillOpacity: 0.3,
-        };
-      case "Odległość od sieci kanalizacyjnej do 10m":
-        return {
-          color: "brown",
-          weight: 2,
-          opacity: 1,
-          fillColor: "brown",
-          fillOpacity: 0.3,
-        };
-      case "Odległość od instalacji BDOT10k do 100m":
-        return {
-          color: "orange",
-          weight: 2,
-          opacity: 1,
-          fillColor: "orange",
-          fillOpacity: 0.3,
-        };
-      default:
-        return {
-          color: "blue",
-          weight: 2,
-          opacity: 1,
-          fillColor: "blue",
-          fillOpacity: 0.5,
-        };
-      case "Odległość od zabudowy do 150m":
-        return {
-          color: "green",
-          weight: 2,
-          opacity: 1,
-          fillColor: "green",
-          fillOpacity: 0.4,
-        };
-      case "Zabudowa gęsta":
-        return {
-          color: "orange",
-          weight: 2,
-          opacity: 1,
-          fillColor: "orange",
-          fillOpacity: 0.4,
-        };
-      case "Zabudowa średnio gęsta":
-        return {
-          color: "yellow",
-          weight: 2,
-          opacity: 1,
-          fillColor: "yellow",
-          fillOpacity: 0.4,
-        };
-      case "Zabudowa luźna":
-        return {
-          color: "green",
-          weight: 2,
-          opacity: 1,
-          fillColor: "green",
-          fillOpacity: 0.4,
-        };
-      case "Tereny wyłączone":
-        return {
-          color: "red",
-          weight: 2,
-          opacity: 1,
-          fillColor: "red",
-          fillOpacity: 0.4,
-        };
-    }
+  const getLayerStyle = (index) => {
+    const styles = [
+      { color: "red", fillOpacity: 0.5 }, // Budynki
+      { color: "green", fillOpacity: 0.3 }, // Odleglosc 150m
+      { color: "pink", fillOpacity: 0.6 }, // Cieplownicza
+      { color: "yellow", fillOpacity: 0.4 }, // Gazowa 10m
+      { color: "yellow", fillOpacity: 0.5 }, // Gazowa 50m
+      { color: "red", fillOpacity: 0.7 }, // Elektroenergetyczna
+      { color: "brown", fillOpacity: 0.4 }, // Kanalizacyjna
+      { color: "blue", fillOpacity: 0.5 }, // Wodociągowa
+      { color: "grey", fillOpacity: 0.7 }, // Dodatkowe bdot
+      { color: "green", fillOpacity: 0.6 }, // Luzna zabudowa
+      { color: "yellow", fillOpacity: 0.7 }, // Srednio gest zabudowa
+      { color: "orange", fillOpacity: 0.5 }, // Zabudowa gest
+      { color: "red", fillOpacity: 0.4 }, // Tereny wylaczone
+      { color: "black", fillOpacity: 0 }, // Granica
+    ];
+    return styles[index % styles.length];
   };
+
+  const layerNames = [
+    "Budynki",
+    "Odległość od zabudowań do 150m",
+    "Sieć ciepłownicza - 10m",
+    "Sieć gazowa - 10m",
+    "Sieć gazowa - 50m",
+    "Sieć elektroenergetyczna",
+    "Sieć kanalizacyjna",
+    "Sieć wodociągowa",
+    "Dodatkowe obiekty z BDOT10k - 100m",
+    "Luźna zabudowa",
+    "Zabudowa o średniej intensywności",
+    "Zabudowa gęsta",
+    "Tereny wyłączone",
+    "Granica dzielnicy",
+  ];
 
   return (
     <div className="district_06">
-      <h1 className="title_06">{districtData.name}</h1>
+      <h1 className="title_06">{districtName}</h1>
       <div className="line_06"></div>
       <Link to="/menu/geoportal">
         <button className="back_02">DZIELNICE</button>
@@ -211,33 +90,37 @@ const Srodmiescie = () => {
 
       <MapContainer
         className="map_06"
-        center={[52.234, 21.012]}
+        center={[52.2298, 21.03]}
         zoom={13.4}
-        style={{
-          height: "800px",
-          width: "1200px",
-        }}
+        style={{ height: "800px", width: "1200px" }}
       >
-        <LayersControl className="layers_06a">
+        <LayersControl>
           <LayersControl.BaseLayer checked name="OSM">
             <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
           </LayersControl.BaseLayer>
           <LayersControl.BaseLayer name="Google Satellite">
             <TileLayer url="http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}" />
           </LayersControl.BaseLayer>
-          {overlayData.map((overlay, index) => (
+
+          {sheltersData.map((data, index) => (
             <LayersControl.Overlay
               key={index}
-              name={overlay.name}
-              checked={
-                overlay.name === "Odległość od zabudowy do 150m" ||
-                overlay.name === "Budynki"
-              }
+              checked={index === 0 || index === 1 || index === 13}
+              name={layerNames[index]}
             >
-              {overlay.data && (
+              {data.length > 0 && (
                 <GeoJSON
-                  data={overlay.data}
-                  style={() => getOverlayStyle(overlay.name)}
+                  data={{
+                    type: "FeatureCollection",
+                    features: data,
+                  }}
+                  style={{
+                    color: getLayerStyle(index).color,
+                    weight: 2,
+                    opacity: 1,
+                    fillColor: getLayerStyle(index).color,
+                    fillOpacity: getLayerStyle(index).fillOpacity,
+                  }}
                 />
               )}
             </LayersControl.Overlay>

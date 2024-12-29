@@ -5,7 +5,7 @@ import "leaflet/dist/leaflet.css";
 import axios from "axios";
 import "./Bemowo.css";
 
-const Wola = ({ districtName = "Wola - dzielnica" }) => {
+const PragaPolnoc = ({ districtName = "Praga-Północ - dzielnica" }) => {
   const sheltersUrls = [
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_budynki&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_odleglosc_150m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
@@ -90,8 +90,8 @@ const Wola = ({ districtName = "Wola - dzielnica" }) => {
 
       <MapContainer
         className="map_06"
-        center={[52.235, 20.96]}
-        zoom={13.5}
+        center={[52.263, 21.0336]}
+        zoom={13.4}
         style={{ height: "800px", width: "1200px" }}
       >
         <LayersControl>
@@ -131,4 +131,4 @@ const Wola = ({ districtName = "Wola - dzielnica" }) => {
   );
 };
 
-export default Wola;
+export default PragaPolnoc;

@@ -9,6 +9,7 @@ const Bemowo = ({ districtName = "Bemowo - dzielnica" }) => {
   const sheltersUrls = [
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_budynki&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_odleglosc_150m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_budynki_1%2F3_wysokosci&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_cieplownicza_10m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_gazowa_10m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_gazowa_50m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
@@ -48,6 +49,7 @@ const Bemowo = ({ districtName = "Bemowo - dzielnica" }) => {
       { color: "red", fillOpacity: 0.5 }, // Budynki
       { color: "green", fillOpacity: 0.3 }, // Odleglosc 150m
       { color: "pink", fillOpacity: 0.6 }, // Cieplownicza
+      { color: "red", fillOpacity: 0.9 }, // 1/3 wys
       { color: "yellow", fillOpacity: 0.4 }, // Gazowa 10m
       { color: "yellow", fillOpacity: 0.5 }, // Gazowa 50m
       { color: "red", fillOpacity: 0.7 }, // Elektroenergetyczna
@@ -66,6 +68,7 @@ const Bemowo = ({ districtName = "Bemowo - dzielnica" }) => {
   const layerNames = [
     "Budynki",
     "Odległość od zabudowań do 150m",
+    "Odległość od budynku - 1/3 wysokości",
     "Sieć ciepłownicza - 10m",
     "Sieć gazowa - 10m",
     "Sieć gazowa - 50m",
@@ -105,7 +108,7 @@ const Bemowo = ({ districtName = "Bemowo - dzielnica" }) => {
           {sheltersData.map((data, index) => (
             <LayersControl.Overlay
               key={index}
-              checked={index === 0 || index === 1 || index === 13}
+              checked={index === 0 || index === 1 || index === 14}
               name={layerNames[index]}
             >
               {data.length > 0 && (

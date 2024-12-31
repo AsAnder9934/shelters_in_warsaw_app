@@ -152,12 +152,13 @@
   font-family: "Lato", sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
   text-align: center;
   line-height: 50px;
   color: #ffffff;
   cursor: pointer;
   transition: background-color 0.8s ease;
+  z-index: 1100; /* Z-INDEX bo legenda przyslonila przycisk    */
 }
 
 button:hover {

@@ -103,7 +103,11 @@ const Bemowo = ({ districtName = "Bemowo - dzielnica" }) => {
           className="map_06"
           center={[52.245, 20.91]}
           zoom={13.4}
-          style={{ height: "85vh", width: "75vw" }}
+          style={{
+            height: "84.7vh",
+            width: "74.8vw",
+            border: "2px solid orange",
+          }}
         >
           <LayersControl>
             <LayersControl.BaseLayer checked name="OSM">
@@ -119,7 +123,7 @@ const Bemowo = ({ districtName = "Bemowo - dzielnica" }) => {
                 checked={index === 0 || index === 1 || index === 14}
                 name={layerNames[index]}
               >
-                {data.length > 0 && (
+                {data && data.length > 0 && (
                   <GeoJSON
                     data={{
                       type: "FeatureCollection",
@@ -141,7 +145,7 @@ const Bemowo = ({ districtName = "Bemowo - dzielnica" }) => {
 
         {/* Legendaaa */}
         <div className="map-legend">
-          <h3>Legenda</h3>
+          <h3>LEGENDA</h3>
           {layerNames.map((name, index) => (
             <div key={index} className="legend-item">
               <span

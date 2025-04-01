@@ -12,7 +12,7 @@ import axios from "axios";
 import info_tab from "./src/info_tab_district.png";
 import "./Bemowo.css";
 
-const Srodmiescie = ({ districtName = "Śródmieście - dzielnica" }) => {
+const Wesola = ({ districtName = "Wesoła - dzielnica" }) => {
   const sheltersUrls = [
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_budynki&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_odleglosc_150m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
@@ -101,7 +101,7 @@ const Srodmiescie = ({ districtName = "Śródmieście - dzielnica" }) => {
         <img className="info_tab_06" src={info_tab}></img>
         <MapContainer
           className="map_06"
-          center={[52.2298, 21.03]}
+          center={[52.23, 21.2245]}
           zoom={13.4}
           style={{
             height: "84.7vh",
@@ -161,4 +161,4 @@ const Srodmiescie = ({ districtName = "Śródmieście - dzielnica" }) => {
   );
 };
 
-export default Srodmiescie;
+export default Wesola;

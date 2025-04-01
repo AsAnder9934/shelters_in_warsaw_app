@@ -1,14 +1,22 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { MapContainer, TileLayer, LayersControl, GeoJSON } from "react-leaflet";
+import {
+  MapContainer,
+  TileLayer,
+  LayersControl,
+  GeoJSON,
+  useMap,
+} from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import axios from "axios";
+import info_tab from "./src/info_tab_district.png";
 import "./Bemowo.css";
 
 const Wola = ({ districtName = "Wola - dzielnica" }) => {
   const sheltersUrls = [
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_budynki&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_odleglosc_150m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_budynki_1%2F3_wysokosci&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_cieplownicza_10m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_gazowa_10m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_gazowa_50m&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
@@ -47,6 +55,7 @@ const Wola = ({ districtName = "Wola - dzielnica" }) => {
     const styles = [
       { color: "red", fillOpacity: 0.5 }, // Budynki
       { color: "green", fillOpacity: 0.3 }, // Odleglosc 150m
+      { color: "red", fillOpacity: 0.3 }, // odleglosc 1/3 wys
       { color: "pink", fillOpacity: 0.6 }, // Cieplownicza
       { color: "yellow", fillOpacity: 0.4 }, // Gazowa 10m
       { color: "yellow", fillOpacity: 0.5 }, // Gazowa 50m
@@ -66,6 +75,7 @@ const Wola = ({ districtName = "Wola - dzielnica" }) => {
   const layerNames = [
     "Budynki",
     "Odległość od zabudowań do 150m",
+    "Odległość od budynku - 1/3 wysokości",
     "Sieć ciepłownicza - 10m",
     "Sieć gazowa - 10m",
     "Sieć gazowa - 50m",
@@ -85,48 +95,68 @@ const Wola = ({ districtName = "Wola - dzielnica" }) => {
       <h1 className="title_06">{districtName}</h1>
       <div className="line_06"></div>
       <Link to="/menu/geoportal">
-        <button className="back_02">DZIELNICE</button>
+        <button className="back_02">Dzielnice</button>
       </Link>
+      <div className="map-container">
+        <img className="info_tab_06" src={info_tab}></img>
+        <MapContainer
+          className="map_06"
+          center={[52.235, 20.96]}
+          zoom={13.5}
+          style={{
+            height: "84.7vh",
+            width: "74.8vw",
+            border: "2px solid orange",
+          }}
+        >
+          <LayersControl>
+            <LayersControl.BaseLayer checked name="OSM">
+              <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
+            </LayersControl.BaseLayer>
+            <LayersControl.BaseLayer name="Google Satellite">
+              <TileLayer url="http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}" />
+            </LayersControl.BaseLayer>
 
-      <MapContainer
-        className="map_06"
-        center={[52.235, 20.96]}
-        zoom={13.5}
-        style={{ height: "800px", width: "1200px" }}
-      >
-        <LayersControl>
-          <LayersControl.BaseLayer checked name="OSM">
-            <TileLayer url="https://tile.openstreetmap.org/{z}/{x}/{y}.png" />
-          </LayersControl.BaseLayer>
-          <LayersControl.BaseLayer name="Google Satellite">
-            <TileLayer url="http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}" />
-          </LayersControl.BaseLayer>
+            {sheltersData.map((data, index) => (
+              <LayersControl.Overlay
+                key={index}
+                checked={index === 0 || index === 1 || index === 14}
+                name={layerNames[index]}
+              >
+                {data && data.length > 0 && (
+                  <GeoJSON
+                    data={{
+                      type: "FeatureCollection",
+                      features: data,
+                    }}
+                    style={{
+                      color: getLayerStyle(index).color,
+                      weight: 2,
+                      opacity: 1,
+                      fillColor: getLayerStyle(index).color,
+                      fillOpacity: getLayerStyle(index).fillOpacity,
+                    }}
+                  />
+                )}
+              </LayersControl.Overlay>
+            ))}
+          </LayersControl>
+        </MapContainer>
 
-          {sheltersData.map((data, index) => (
-            <LayersControl.Overlay
-              key={index}
-              checked={index === 0 || index === 1 || index === 13}
-              name={layerNames[index]}
-            >
-              {data.length > 0 && (
-                <GeoJSON
-                  data={{
-                    type: "FeatureCollection",
-                    features: data,
-                  }}
-                  style={{
-                    color: getLayerStyle(index).color,
-                    weight: 2,
-                    opacity: 1,
-                    fillColor: getLayerStyle(index).color,
-                    fillOpacity: getLayerStyle(index).fillOpacity,
-                  }}
-                />
-              )}
-            </LayersControl.Overlay>
+        {/* Legendaaa */}
+        <div className="map-legend">
+          <h3>LEGENDA</h3>
+          {layerNames.map((name, index) => (
+            <div key={index} className="legend-item">
+              <span
+                className="legend-color"
+                style={{ backgroundColor: getLayerStyle(index).color }}
+              ></span>
+              {name}
+            </div>
           ))}
-        </LayersControl>
-      </MapContainer>
+        </div>
+      </div>
     </div>
   );
 };

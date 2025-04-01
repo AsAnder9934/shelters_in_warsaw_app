@@ -16,6 +16,15 @@ import Bialoleka from "./components/06a_districts/Bialoleka";
 import PragaPolnoc from "./components/06a_districts/PragaPolnoc";
 import PragaPoludnie from "./components/06a_districts/PragaPoludnie";
 import Targowek from "./components/06a_districts/Targowek";
+import Ochota from "./components/06a_districts/Ochota";
+import Wlochy from "./components/06a_districts/Wlochy";
+import Ursus from "./components/06a_districts/Ursus";
+import Mokotow from "./components/06a_districts/Mokotow";
+import Ursynow from "./components/06a_districts/Ursynow";
+import Wilanow from "./components/06a_districts/Wilanow";
+import Wawer from "./components/06a_districts/Wawer";
+import Rembertow from "./components/06a_districts/Rembertow";
+import Wesola from "./components/06a_districts/Wesola";
 
 const router = createBrowserRouter([
   {
@@ -77,6 +86,42 @@ const router = createBrowserRouter([
   {
     path: "/:districtId/targowek",
     element: <Targowek />,
+  },
+  {
+    path: "/:districtId/ochota",
+    element: <Ochota />,
+  },
+  {
+    path: "/:districtId/wlochy",
+    element: <Wlochy />,
+  },
+  {
+    path: "/:districtId/ursus",
+    element: <Ursus />,
+  },
+  {
+    path: "/:districtId/mokotow",
+    element: <Mokotow />,
+  },
+  {
+    path: "/:districtId/ursynow",
+    element: <Ursynow />,
+  },
+  {
+    path: "/:districtId/wilanow",
+    element: <Wilanow />,
+  },
+  {
+    path: "/:districtId/wawer",
+    element: <Wawer />,
+  },
+  {
+    path: "/:districtId/rembertow",
+    element: <Rembertow />,
+  },
+  {
+    path: "/:districtId/wesola",
+    element: <Wesola />,
   },
 ]);
 

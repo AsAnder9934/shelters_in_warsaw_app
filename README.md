@@ -1,70 +1,53 @@
-# Getting Started with Create React App
+# Geoportal dla analizy lokalizacji schronów
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Opis projektu
 
-## Available Scripts
+Geoportal stanowi narzędzie do wizualizacji danych przestrzennych, które wspomagają analizę potencjalnych lokalizacji schronów na terenie Warszawy. Projekt jest częścią pracy magisterskiej dotyczącej wyznaczania odpowiednich miejsc pod schrony w kontekście różnych kryteriów ochrony cywilnej.
 
-In the project directory, you can run:
+Geoportal umożliwia użytkownikom wyświetlanie i analizowanie różnych warstw danych, takich jak:
 
-### `npm start`
+- **Obszary sieci gazowej**: W miejscach objętych siecią gazową lokalizacja schronów jest wykluczona.
+- **Dzielnice Warszawy**: Każda dzielnica jest reprezentowana osobno, co umożliwia bardziej szczegółową analizę.
+- **Zabudowa**: Warstwy przedstawiające gęstość zabudowy (gęsta i luźna) zgodnie z klasyfikacją CORINA LAND USE.
+- **Sieć drogowa**: Wyszukiwanie miejsc z dogodnym dostępem do dróg ewakuacyjnych.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Technologie
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- **React** – Framework do budowy interfejsu użytkownika.
+- **React Router** – Biblioteka do zarządzania nawigacją w aplikacji.
+- **GeoServer** – Serwer danych geospatial, który służy do przechowywania i udostępniania danych przestrzennych.
+- **PostGIS** – Rozszerzenie PostgreSQL do pracy z danymi geograficznymi.
+- **Leaflet.js** – Biblioteka do tworzenia interaktywnych map.
 
-### `npm test`
+## Instalacja
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Sklonuj repozytorium na swoje urządzenie:
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/TwojeRepozytorium.git
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Zainstaluj wymagane zależności:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   cd TwojeRepozytorium
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Uruchom aplikację:
+   ```bash
+   npm start
+   ```
 
-### `npm run eject`
+Aplikacja będzie dostępna pod adresem: `http://localhost:3000`
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Warstwy danych
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+- **Sieć gazowa**: Źródło: [tu wstaw link lub nazwę pliku danych]
+- **Dzielnice Warszawy**: Źródło: [tu wstaw link lub nazwę pliku danych]
+- **Zabudowa (CORINA LAND USE)**: Źródło: [tu wstaw link lub nazwę pliku danych]
+- **Sieć drogowa**: Źródło: [tu wstaw link lub nazwę pliku danych]
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+## Licencja
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Ten projekt jest licencjonowany na warunkach [wstaw licencję].

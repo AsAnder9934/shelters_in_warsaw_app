@@ -2,14 +2,16 @@
 
 ## Opis projektu
 
-Geoportal stanowi narzędzie do wizualizacji danych przestrzennych, które wspomagają analizę potencjalnych lokalizacji schronów na terenie Warszawy. Projekt jest częścią pracy magisterskiej dotyczącej wyznaczania odpowiednich miejsc pod schrony w kontekście różnych kryteriów ochrony cywilnej.
+Geoportal stanowi narzędzie do wizualizacji danych przestrzennych, które wspomagają analizę potencjalnych lokalizacji schronów na terenie Warszawy. Projekt jest częścią pracy magisterskiej na temat: "Wyznaczenie potencjalnej lokalizacji schronów na terenie Warszawy".
 
 Geoportal umożliwia użytkownikom wyświetlanie i analizowanie różnych warstw danych, takich jak:
 
-- **Obszary sieci gazowej**: W miejscach objętych siecią gazową lokalizacja schronów jest wykluczona.
+- **Obszary Sieci Uzbrojenia terenu**: W miejscach objętych SUT lokalizacja schronów jest wykluczona.
 - **Dzielnice Warszawy**: Każda dzielnica jest reprezentowana osobno, co umożliwia bardziej szczegółową analizę.
-- **Zabudowa**: Warstwy przedstawiające gęstość zabudowy (gęsta i luźna) zgodnie z klasyfikacją CORINA LAND USE.
+- **Zabudowa**: Warstwy przedstawiające gęstość zabudowy (gęsta, średnio-gęsta i luźna) podzielone na podstawie klasyfikacji CORINA LAND USE.
 - **Sieć drogowa**: Wyszukiwanie miejsc z dogodnym dostępem do dróg ewakuacyjnych.
+- **Gęstość zaludnienia**: Lokalizowanie miejsc schronienia tam, gdzie jest to najbardziej potrzebne.
+- **Obiekty niebezpieczne**: Zachowanie odpowiednich odległości od obiektów skategoryzowanych jako niebezpieczne.
 
 ## Technologie
 

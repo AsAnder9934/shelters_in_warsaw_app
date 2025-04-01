@@ -45,12 +45,12 @@ Aplikacja będzie dostępna pod adresem: `http://localhost:3000`
 
 ## Warstwy danych
 
-- **Sieć Uzbrojenia Terenu**: Źródło: `https://integracja.gugik.gov.pl/cgi-bin/KrajowaIntegracjaUzbrojeniaTerenu`
-- **Baza Danych Obiektów Topograficznych w skali 1:10 000**: Źródło: `https://mapy.geoportal.gov.pl/imap/Imgp_2.html?gpmap=gp0`
-- **Numeryczne Modele Terenu/Numeryczne Modele Pokrycia Terenu**: Źródło: `https://mapy.geoportal.gov.pl/imap/Imgp_2.html?gpmap=gp0`
-- **Ryzyka związane z powodzią**: Źródło: `https://wody.isok.gov.pl/imap_kzgw/?gpmap=gpMZP`
-- **Urban Atlas Land Cover/Land Use**: Źródło: `https://land.copernicus.eu/en/products/urban-atlas/urban-atlas-2018`
-- **UGlobal Human Settlement Layer**: Źródło: `https://human-settlement.emergency.copernicus.eu/download.php?ds=pop`
+- **Sieć Uzbrojenia Terenu**: Źródło: [https://integracja.gugik.gov.pl/cgi-bin/KrajowaIntegracjaUzbrojeniaTerenu]
+- **Baza Danych Obiektów Topograficznych w skali 1:10 000**: Źródło: [https://mapy.geoportal.gov.pl/imap/Imgp_2.html?gpmap=gp0]
+- **Numeryczne Modele Terenu/Numeryczne Modele Pokrycia Terenu**: Źródło: [https://mapy.geoportal.gov.pl/imap/Imgp_2.html?gpmap=gp0]
+- **Ryzyka związane z powodzią**: Źródło: [https://wody.isok.gov.pl/imap_kzgw/?gpmap=gpMZP]
+- **Urban Atlas Land Cover/Land Use**: Źródło: [https://land.copernicus.eu/en/products/urban-atlas/urban-atlas-2018]
+- **UGlobal Human Settlement Layer**: Źródło: [https://human-settlement.emergency.copernicus.eu/download.php?ds=pop]
 
 ## Licencja
 

@@ -26,7 +26,7 @@ Geoportal umożliwia użytkownikom wyświetlanie i analizowanie różnych warstw
 1. Sklonuj repozytorium na swoje urządzenie:
 
    ```bash
-   git clone https://github.com/TwojeRepozytorium.git
+   git clone https://github.com/AsAnder9934/shelters_in_warsaw_app
    ```
 
 2. Zainstaluj wymagane zależności:

@@ -32,7 +32,7 @@ Geoportal umożliwia użytkownikom wyświetlanie i analizowanie różnych warstw
 2. Zainstaluj wymagane zależności:
 
    ```bash
-   cd TwojeRepozytorium
+   cd shelters_in_warsaw_app
    npm install
    ```
 

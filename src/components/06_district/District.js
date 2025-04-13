@@ -124,7 +124,7 @@ const DistrictDetails = () => {
   const district = mapData[districtId];
 
   if (!district) {
-    return <div>Dzielnica nieznana: {districtId}</div>;
+    return <div>PRAGA-POŁUDNIE</div>;
   }
 
   return (

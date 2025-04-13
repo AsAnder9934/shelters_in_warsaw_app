@@ -17,35 +17,49 @@ function Menu() {
         </Link>
         <div className="title_02">MENU GEOPORTALU</div>
         <line className="line_02"></line>
-        <div className="button1_02">
-          <img
-            className="about_icon_02"
-            src={about_icon}
-            alt="about_icon"
-          ></img>
-          <Link to="about">
+        <Link to="about">
+          <div className="button1_02">
+            <img
+              className="about_icon_02"
+              src={about_icon}
+              alt="about_icon"
+            ></img>
             <button className="about_02">O PROJEKCIE</button>
-          </Link>
-        </div>
-        <div className="button2_02">
-          <img className="data_icon_02" src={data_icon} alt="data_icon"></img>
-          <Link to="/menu/data">
+          </div>
+        </Link>
+        <Link to="/menu/data">
+          <div className="button2_02">
+            <img className="data_icon_02" src={data_icon} alt="data_icon"></img>
+
             <button className="data_02">DANE</button>
-          </Link>
-        </div>
-        <div className="button3_02">
-          <img className="map_icon_02" src={map_icon} alt="map-icon"></img>
-          <Link to="/menu/geoportal">
+          </div>
+        </Link>
+        <Link to="/menu/geoportal">
+          <div className="button3_02">
+            <img className="map_icon_02" src={map_icon} alt="map-icon"></img>
+
             <button className="geoportal_02">GEOPORTAL</button>
-          </Link>
-        </div>
-        <div className="button4_02">
+          </div>
+        </Link>
+        <div
+          className="button4_02"
+          onClick={() =>
+            window.open(
+              "https://strazpozarna.maps.arcgis.com/apps/instant/nearby/index.html?appid=ec00a2b879424296b6dcc400393c6c1e&sliderDistance=100"
+            )
+          }
+        >
           <img
             className="shelter_icon_02"
             src={shelter_icon}
             alt="shelter_icon"
+            onClick={() =>
+              window.open(
+                "https://strazpozarna.maps.arcgis.com/apps/instant/nearby/index.html?appid=ec00a2b879424296b6dcc400393c6c1e&sliderDistance=100"
+              )
+            }
           ></img>
-          <button className="psp_shelters_02">SCHRONY PSP</button>
+          <button className="psp_shelters_02">APLIKACJA "SCHRONY" PSP</button>
         </div>
       </div>
     </div>

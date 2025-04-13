@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import "./Geoportal.css";
 import { useNavigate } from "react-router-dom";
-import { ReactComponent as WarsawMap } from "./src/warsaw-map.svg";
+import { ReactComponent as WarsawMap } from "./src/warsaw-mapp.svg";
 
 function Geoportal() {
   const navigate = useNavigate();

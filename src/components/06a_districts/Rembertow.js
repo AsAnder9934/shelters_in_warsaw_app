@@ -29,6 +29,9 @@ const Rembertow = ({ districtName = "Rembertów - dzielnica" }) => {
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_zabudowa_gesta&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_tereny_wylaczone&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
     `http://127.0.0.1:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_gminy_granica&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://localhost:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Awarszawa_1_3_all&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://localhost:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Agesta_sciana_przylegla&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
+    `http://localhost:8080/geoserver/shelters/ows?service=WFS&version=1.0.0&request=GetFeature&typeName=shelters%3Asrednio_tunel&maxFeatures=50&outputFormat=application%2Fjson&CQL_FILTER=nazwajedno='${districtName}'`,
   ];
 
   // Stan dla nowych danych
@@ -68,6 +71,9 @@ const Rembertow = ({ districtName = "Rembertów - dzielnica" }) => {
       { color: "orange", fillOpacity: 0.5 }, // Zabudowa gest
       { color: "red", fillOpacity: 0.4 }, // Tereny wylaczone
       { color: "black", fillOpacity: 0 }, // Granica
+      { color: "green", fillOpacity: 0.3 }, // 1/3
+      { color: "red", fillOpacity: 0.3 }, // przylegla
+      { color: "blue", fillOpacity: 0.3 }, // tunel
     ];
     return styles[index % styles.length];
   };
@@ -88,6 +94,9 @@ const Rembertow = ({ districtName = "Rembertów - dzielnica" }) => {
     "Zabudowa gęsta",
     "Tereny wyłączone",
     "Granica dzielnicy",
+    "Obszary z odl. 1/3 wys. bud.",
+    "Obszary ze ścianą przyległą",
+    "Obszary z łącznikiem np. tunelem",
   ];
 
   return (
@@ -116,30 +125,70 @@ const Rembertow = ({ districtName = "Rembertów - dzielnica" }) => {
             <LayersControl.BaseLayer name="Google Satellite">
               <TileLayer url="http://mt0.google.com/vt/lyrs=s&hl=en&x={x}&y={y}&z={z}" />
             </LayersControl.BaseLayer>
+            <>
+              {sheltersData.map((data, index) => {
+                if (index === 15) {
+                  return (
+                    <React.Fragment key="wyniki-separator">
+                      <LayersControl.Overlay
+                        name="--------- WYNIKI ---------"
+                        checked={false}
+                      >
+                        <GeoJSON
+                          data={{ type: "FeatureCollection", features: [] }}
+                        />
+                      </LayersControl.Overlay>
 
-            {sheltersData.map((data, index) => (
-              <LayersControl.Overlay
-                key={index}
-                checked={index === 0 || index === 1 || index === 14}
-                name={layerNames[index]}
-              >
-                {data && data.length > 0 && (
-                  <GeoJSON
-                    data={{
-                      type: "FeatureCollection",
-                      features: data,
-                    }}
-                    style={{
-                      color: getLayerStyle(index).color,
-                      weight: 2,
-                      opacity: 1,
-                      fillColor: getLayerStyle(index).color,
-                      fillOpacity: getLayerStyle(index).fillOpacity,
-                    }}
-                  />
-                )}
-              </LayersControl.Overlay>
-            ))}
+                      <LayersControl.Overlay
+                        key={index}
+                        checked={false}
+                        name={layerNames[index]}
+                      >
+                        {data && data.length > 0 && (
+                          <GeoJSON
+                            data={{
+                              type: "FeatureCollection",
+                              features: data,
+                            }}
+                            style={{
+                              color: getLayerStyle(index).color,
+                              weight: 2,
+                              opacity: 1,
+                              fillColor: getLayerStyle(index).color,
+                              fillOpacity: getLayerStyle(index).fillOpacity,
+                            }}
+                          />
+                        )}
+                      </LayersControl.Overlay>
+                    </React.Fragment>
+                  );
+                }
+
+                return (
+                  <LayersControl.Overlay
+                    key={index}
+                    checked={index === 0 || index === 1 || index === 14}
+                    name={layerNames[index]}
+                  >
+                    {data && data.length > 0 && (
+                      <GeoJSON
+                        data={{
+                          type: "FeatureCollection",
+                          features: data,
+                        }}
+                        style={{
+                          color: getLayerStyle(index).color,
+                          weight: 2,
+                          opacity: 1,
+                          fillColor: getLayerStyle(index).color,
+                          fillOpacity: getLayerStyle(index).fillOpacity,
+                        }}
+                      />
+                    )}
+                  </LayersControl.Overlay>
+                );
+              })}
+            </>
           </LayersControl>
         </MapContainer>
 

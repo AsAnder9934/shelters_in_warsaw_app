@@ -9,25 +9,24 @@ function Data() {
         <Link to="/menu">
           <button className="back_02">MENU</button>
         </Link>
-        <div className="about2_02a">O projekcie</div>
+        <div className="about2_02a">Dane wykorzystane w projekcie</div>
         <line className="line_02a"></line>
         <text className="information1_02a">
-          Lorem ipsum dolor sit amet. Et temporibus illo qui corporis officia 33
-          illo voluptatem id Quis delectus. Ut laudantium laudantium vel
-          voluptatem saepe eos nostrum consequatur eos architecto molestias et
-          iure odio. Ut nulla natus qui dolor mollitia aut veniam explicabo aut
-          harum laudantium in omnis earum aut quas veritatis. Aut vero numquam
-          est voluptas voluptatum sit velit voluptatibus nam quia placeat. In
-          similique internos non quae harum sed quae atque qui illo tempora.
+          Do zrealizowania przyjętych założeń metodycznych, a także wiarygodnego
+          wskazania miejsc do tworzenia budowli ochronnych korzystano z
+          oficjalnych źródeł danych. Były to zarówno instytucje polskie, jak i
+          europejskie, udostępniające dane nieodpłatnie.
         </text>
         <text className="information2_02a">
-          Lorem ipsum dolor sit amet. Et temporibus illo qui corporis officia 33
-          illo voluptatem id Quis delectus. Ut laudantium laudantium vel
-          voluptatem saepe eos nostrum consequatur eos architecto molestias et
-          iure odio. Ut nulla natus qui dolor mollitia aut veniam explicabo aut
-          harum laudantium in omnis earum aut quas veritatis. Aut vero numquam
-          est voluptas voluptatum sit velit voluptatibus nam quia placeat. In
-          similique internos non quae harum sed quae atque qui illo tempora.
+          Program Copernicus: <br /> 1) Urban Atlas Land Cover/Land Use <br />
+          2) Global Human Settlement Layer
+          <br />
+          <br />
+          Państwowy zasób geodezyjny i kartograficzny <br /> 1) NMT oraz NMPT
+          <br /> 2) BDOT10k <br /> 3)Sieć Uzbrojenia Ternu <br /> <br />
+          <br />
+          Hydroportal <br />
+          1) ryzyko związane z powodziami rzecznymi
         </text>
       </div>
     </div>
